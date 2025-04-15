@@ -4,11 +4,11 @@ import MyDatePicker from "./Datepicker";
 import { useNavigate } from "react-router-dom"
 
 
-function Page1() {
+function Home() {
 
   const navigate = useNavigate()
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-t from-blue-500 to-purple-500">
+    <div className="flex justify-center flex-col items-center h-screen bg-gradient-to-t from-blue-500 to-purple-500">
       <Logo />
       <h3 className="text-yellow-200 pb-8 font-serif text-2xl">When do you want to travel?</h3>
       <MyDatePicker />
@@ -18,4 +18,4 @@ function Page1() {
   )
 }
 
-export default Page1;
+export default Home;

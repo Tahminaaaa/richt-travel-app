@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../Components/Logo";
+import Logo from "./Logo";
 import beachImg from "../Photos/richtapp-beach.png"
 import skiImg from "../Photos/richtapp-ski.png"
 import pyramidImg from "../Photos/richtapp-pyramids.png"
