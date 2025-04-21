@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import backImg from "../Photos/richtapp-backbutton.png"
 import continentsData from "./ContinentsData";
 
-function Page3() {
+function Continents() {
     const navigate = useNavigate()
     const [selectedContinentId, setSelectedContinentId] = useState(null);
 
@@ -12,15 +12,21 @@ function Page3() {
     const handleContinentSelect = (continentId) => {
         console.log("Chosen continent ID:", continentId);
         setSelectedContinentId(continentId);
+        localStorage.setItem("selectedContinent", JSON.stringify(continentId));
     };
-
+    useEffect(() => {
+        const savedContinent = localStorage.getItem("selectedContinent");
+        if (savedContinent) {
+            setSelectedContinentId(JSON.parse(savedContinent));
+        }
+    }, []);
 
     const row1 = continentsData.slice(0, 3);
     const row2 = continentsData.slice(3, 6);
     return (
         <div className="relative h-screen bg-gradient-to-t from-blue-500 to-purple-500 px-4 overflow-y-auto">
             <div
-                onClick={() => navigate("/page2")}
+                onClick={() => navigate("/activity")}
                 className="absolute top-4 left-4 z-10 cursor-pointer w-10 h-10 hover:scale-110 transition-transform"
             >
                 <img src={backImg} alt="back" />
@@ -80,7 +86,7 @@ function Page3() {
 
                 {selectedContinentId && (
                     <button
-                        onClick={() => console.log("Proceeding with:", selectedContinentId)}
+                        onClick={() => navigate("/results")}
                         className="mt-8 px-6 py-2 bg-yellow-400 text-purple-700 font-semibold rounded-lg shadow-md hover:bg-yellow-300 transition-colors"
                     >
                         Next
@@ -91,4 +97,4 @@ function Page3() {
     );
 }
 
-export default Page3;
+export default Continents;
